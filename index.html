@@ -16,7 +16,7 @@
     
     <header>
         <div class="text-center p-3">
-            Number of boxes: <input type="number" name="" id="counterBtn" min="3" value="6" max="9">
+            Number of boxes: <input type="number" name="" id="counterBtn" min="3" value="6" max="9" required>
         </div>
     
         <div class="text-center">
@@ -25,20 +25,21 @@
             <button id="answerBtn">Answer</button>
         </div>
     
-        <div class="text-center mt-3 info">
+        <div class="text-center mt-3 p-1 info">
             <p class="">The color to find is: <mark id="colorSelected"></mark></p>
+            <p class="message"></p>
         </div>
     </header>
 
     <main>
         <div class="center mt-3">
             <div class="flex center">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
+                <div class="box item"></div>
+                <div class="box item"></div>
+                <div class="box item"></div>
+                <div class="box item"></div>
+                <div class="box item"></div>
+                <div class="box item"></div>
             </div>
         </div>
     </main>

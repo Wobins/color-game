@@ -1,12 +1,12 @@
 //console.log(eval('2 + 3 * 6 / 2'))
 // let boxes = document.querySelectorAll('.box')
-let colorSelected = document.getElementById('colorSelected')
-let startBtn = document.querySelector('#startBtn')
-let helpBtn = document.querySelector('#helpBtn')
-let answerBtn = document.getElementById('answerBtn')
-let counterBtn = document.querySelector('#counterBtn')
-
-
+let colorSelected = document.getElementById('colorSelected');
+let startBtn = document.querySelector('#startBtn');
+let helpBtn = document.querySelector('#helpBtn');
+let answerBtn = document.getElementById('answerBtn');
+let counterBtn = document.querySelector('#counterBtn');
+let message = document.querySelector('.message');
+let divs = document.querySelectorAll('.item');
 
 //function to generate new colors
 const generateColors = () => {
@@ -32,6 +32,20 @@ const generateColors = () => {
     return newColors;
 }
 
+//function to display the result message
+function displayMsg() {
+    let divColor = this.style.backgroundColor; //the color of the div box clicked
+    
+    let comparedColor = colorSelected.textContent; //the color to find
+
+    if (divColor == comparedColor) {
+        message.innerHTML = "<mark>GOT IT! CONGRATULATIONS!</mark>" //successful result message
+    } 
+    if (divColor != comparedColor) {
+        message.innerHTML = "<mark>OH NO! TRY AGAIN!</mark>" //wrong result message
+    }
+}
+
 //function to set the color to check
 const colorToFind = () => {
     newColors = generateColors(); // generate new colors
@@ -41,6 +55,13 @@ const colorToFind = () => {
     
     let colorChosen = newColors[rand]; // pick the random color to find
     colorSelected.innerText = colorChosen; // tell which color to find
+    message.innerHTML = ''; //erase the previous message
+
+
+    //play the game by clicking any box element
+    divs.forEach(div => {
+        div.addEventListener('click', displayMsg);
+    });
 }
 
 //Function to set the number of boxes
@@ -59,16 +80,37 @@ const setNumBoxes = (evt) => {
         newBox.classList.add('box')
         
         flex.append(newBox);
-        console.log(i)
         i++;
     }
-    // let boxes = document.querySelectorAll('.box')
 
-    colorToFind()
+    divs.forEach(div => {
+        div.addEventListener('click', displayMsg);
+    });
+
+    
+    colorToFind();
 }
 
-colorToFind()
+//Function to give the correct answer
+function toResponse() {
+    let answer = colorSelected.textContent;
+
+    divs.forEach(div => {
+        div.style.backgroundColor = answer;
+    });
+
+    message.innerHTML = "";
+}
 
 
-counterBtn.addEventListener('change', setNumBoxes) //set the number of boxes
-startBtn.addEventListener('click', colorToFind) //start the game
+colorToFind();
+
+
+counterBtn.addEventListener('change', setNumBoxes); //set the number of boxes
+startBtn.addEventListener('click', colorToFind); //start the game
+answerBtn.addEventListener('click', toResponse) //give the correct answer
+
+//play the game by clicking any box element
+divs.forEach(div => {
+    div.addEventListener('click', displayMsg);
+});
