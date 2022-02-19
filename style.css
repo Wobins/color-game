@@ -1,0 +1,43 @@
+body,
+html {
+    width: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #141d25;
+    font-weight: 600;
+}
+
+.heading {
+    color: #fff;
+}
+
+header {
+    background-color: #c14dcc;
+}
+
+.info {
+    background-color: #fff;
+}
+
+.flex {
+    display: flex;
+    width: 80vw;
+    flex-wrap: wrap;
+    gap: 3vh;
+}
+
+.box {
+    cursor: pointer;
+    background-color: #141d25;
+    width: calc(70vw / 3);
+    height: calc(90vh / 3);
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;       
+}   
