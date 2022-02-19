@@ -10,16 +10,14 @@ body {
     font-weight: 600;
 }
 
-.heading {
-    color: #fff;
-}
-
 header {
     background-color: #c14dcc;
+    color: #fff;
 }
 
 .info {
     background-color: #fff;
+    color: #141d25;
 }
 
 .flex {
@@ -31,9 +29,8 @@ header {
 
 .box {
     cursor: pointer;
-    background-color: #141d25;
     width: calc(70vw / 3);
-    height: calc(90vh / 3);
+    height: calc(60vh / 3);
 }
 
 .center {
