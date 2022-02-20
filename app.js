@@ -4,7 +4,7 @@ let helpBtn = document.querySelector('#helpBtn');
 let answerBtn = document.getElementById('answerBtn');
 let counterBtn = document.querySelector('#counterBtn');
 let message = document.querySelector('.message');
-let divs = document.querySelectorAll('.item');
+// let divs = document.querySelectorAll('.item');
 
 //function to generate new colors
 const generateColors = () => {
@@ -17,11 +17,10 @@ const generateColors = () => {
         let b = Math.floor(Math.random() * 255);
 
         console.log(r, g, b);
+
         let generatedColor = 'rgb(' + r + ', ' + g + ', ' + b + ')'  //new color generated
-
         box.style.backgroundColor = generatedColor; //set background color of each box
-        box.style.borderColor = generatedColor; // set border color of each box
-
+        
         newColors.push(generatedColor);
 
     });
@@ -42,6 +41,9 @@ const colorToFind = () => {
     colorSelected.innerText = colorChosen; // tell which color to find
     message.innerHTML = ''; //erase the previous message
 
+
+    let divs = document.querySelectorAll('.item');
+    
     //play the game by clicking any box element
     divs.forEach(div => {
         div.addEventListener('click', displayMsg);
@@ -59,15 +61,12 @@ function setNumBoxes(evt) {
     let i = 0;
     while (i < counter) {
         let newBox = document.createElement("div");
-        newBox.classList.add('box')
+        newBox.classList.add('box');
+        newBox.classList.add('item');
         
         flex.append(newBox);
         i++;
     }
-
-    divs.forEach(div => {
-        div.addEventListener('click', displayMsg);
-    });
 
     colorToFind();
 }
@@ -92,6 +91,7 @@ function displayMsg() {
 function gameAnswer() {
     let answer = colorSelected.textContent;
 
+    let divs = document.querySelectorAll('.item');
     divs.forEach(div => {
         div.style.backgroundColor = answer;
     });
@@ -109,6 +109,6 @@ startBtn.addEventListener('click', colorToFind); //start the game
 answerBtn.addEventListener('click', gameAnswer) //give the correct answer
 
 //play the game by clicking any box element
-divs.forEach(div => {
-    div.addEventListener('click', displayMsg);
-});
+// divs.forEach(div => {
+//     div.addEventListener('click', displayMsg);
+// });
